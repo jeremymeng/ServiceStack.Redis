@@ -176,7 +176,11 @@ namespace ServiceStack.Redis
 
                 var sentinelWorker = GetValidSentinelWorker();
                 if (this.RedisManager == null || sentinelWorker == null)
+#if !DNXCORE50
                     throw new ApplicationException("Unable to resolve sentinels!");
+#else
+                    throw new Exception("Unable to resolve sentinels!");
+#endif
 
                 return this.RedisManager;
             }

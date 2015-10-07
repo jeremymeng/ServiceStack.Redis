@@ -92,7 +92,11 @@ namespace ServiceStack.Redis
                 else
                 {
                     var connectResult = socket.BeginConnect(Host, Port, null, null);
+#if !DNXCORE50
                     connectResult.AsyncWaitHandle.WaitOne(ConnectTimeout, true);
+#else
+                    connectResult.AsyncWaitHandle.WaitOne(ConnectTimeout);
+#endif
                 }
 
                 if (!socket.Connected)
@@ -1197,8 +1201,12 @@ namespace ServiceStack.Redis
                 throw new ArgumentNullException("luaBody");
 
             byte[] buffer = Encoding.UTF8.GetBytes(luaBody);
+#if !DNXCORE50
             var cryptoTransformSHA1 = new SHA1CryptoServiceProvider();
             return BitConverter.ToString(cryptoTransformSHA1.ComputeHash(buffer)).Replace("-", "");
+#else
+            throw new Exception("SHA1CryptoServiceProvider is not supported on .Net Core.");
+#endif
         }
 
         public byte[] ScriptLoad(string luaBody)
