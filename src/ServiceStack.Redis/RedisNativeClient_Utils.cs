@@ -366,7 +366,7 @@ namespace ServiceStack.Redis
         /// <returns></returns>
         protected void WriteCommandToSendBuffer(params byte[][] cmdWithBinaryArgs)
         {
-            if (Pipeline == null && Transaction == null && !IsScan)
+            if (Pipeline == null && Transaction == null)
             {
                 Interlocked.Increment(ref __requestsPerHour);
                 if (__requestsPerHour % 20 == 0)
@@ -542,8 +542,12 @@ namespace ServiceStack.Redis
                 catch (Exception outerEx)
                 {
                     var retryableEx = outerEx as RedisRetryableException;
-                    if (retryableEx == null && outerEx is RedisException)
+                    if (retryableEx == null && outerEx is RedisException 
+                        || outerEx is LicenseException)
+                    {
+                        ResetSendBuffer();
                         throw;
+                    }
 
                     var ex = retryableEx ?? GetRetryableException(outerEx);
                     if (ex == null)
@@ -1167,6 +1171,24 @@ namespace ServiceStack.Redis
 
             var cmdArgs = MergeCommandWithArgs(Commands.EvalSha, sha1.ToUtf8Bytes(), keys.PrependInt(numberKeysInArgs));
             return SendExpectMultiData(cmdArgs);
+        }
+
+        public RedisData EvalCommand(string luaBody, int numberKeysInArgs, params byte[][] keys)
+        {
+            if (luaBody == null)
+                throw new ArgumentNullException("luaBody");
+
+            var cmdArgs = MergeCommandWithArgs(Commands.Eval, luaBody.ToUtf8Bytes(), keys.PrependInt(numberKeysInArgs));
+            return RawCommand(cmdArgs);
+        }
+
+        public RedisData EvalShaCommand(string sha1, int numberKeysInArgs, params byte[][] keys)
+        {
+            if (sha1 == null)
+                throw new ArgumentNullException("sha1");
+
+            var cmdArgs = MergeCommandWithArgs(Commands.EvalSha, sha1.ToUtf8Bytes(), keys.PrependInt(numberKeysInArgs));
+            return RawCommand(cmdArgs);
         }
 
         public string CalculateSha1(string luaBody)

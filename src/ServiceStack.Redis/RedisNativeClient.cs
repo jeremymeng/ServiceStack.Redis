@@ -151,8 +151,6 @@ namespace ServiceStack.Redis
             }
         }
 
-        private bool IsScan;
-
         internal void EndPipeline()
         {
             ResetSendBuffer();
@@ -203,7 +201,7 @@ namespace ServiceStack.Redis
         public RedisNativeClient()
             : this(RedisConfig.DefaultHost, RedisConfig.DefaultPort) { }
 
-#region Common Operations
+        #region Common Operations
 
         long db;
         public long Db
@@ -1055,10 +1053,10 @@ namespace ServiceStack.Redis
             SendExpectSuccess(cmdWithArgs);
         }
 
-#endregion
+        #endregion
 
 
-#region Set Operations
+        #region Set Operations
 
         public byte[][] SMembers(string setId)
         {
@@ -1206,10 +1204,10 @@ namespace ServiceStack.Redis
             return SendExpectMultiData(Commands.SRandMember, setId.ToUtf8Bytes(), count.ToUtf8Bytes());
         }
 
-#endregion
+        #endregion
 
 
-#region List Operations
+        #region List Operations
 
         public byte[][] LRange(string listId, int startingFrom, int endingAt)
         {
@@ -1475,9 +1473,9 @@ namespace ServiceStack.Redis
             return result.Length == 0 ? null : result[1];
         }
 
-#endregion
+        #endregion
 
-#region Sentinel
+        #region Sentinel
 
         private static Dictionary<string, string> ToDictionary(object[] result)
         {
@@ -1571,9 +1569,9 @@ namespace ServiceStack.Redis
             SendExpectSuccess(args.ToArray());
         }
 
-#endregion
+        #endregion
 
-#region Sorted Set Operations
+        #region Sorted Set Operations
 
         private static void AssertSetIdAndValue(string setId, byte[] value)
         {
@@ -1957,10 +1955,10 @@ namespace ServiceStack.Redis
                 Commands.ZRemRangeByLex, setId.ToUtf8Bytes(), min.ToUtf8Bytes(), max.ToUtf8Bytes());
         }
 
-#endregion
+        #endregion
 
 
-#region Hash Operations
+        #region Hash Operations
 
         private static void AssertHashIdAndKey(string hashId, byte[] key)
         {
@@ -2143,20 +2141,7 @@ namespace ServiceStack.Redis
             return new RedisPipelineCommand(this);
         }
 
-        protected ScanResult CreateScanResult()
-        {
-            IsScan = true;
-            return new ScanResult();
-        }
-
-        protected void EndScanResult()
-        {
-            IsScan = false;
-            Interlocked.Increment(ref __requestsPerHour);
-        }
-
-
-#endregion
+        #endregion
 
         internal bool IsDisposed { get; set; }
 
