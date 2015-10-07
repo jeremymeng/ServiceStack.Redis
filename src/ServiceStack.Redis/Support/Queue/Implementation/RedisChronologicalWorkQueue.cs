@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if !DNXCORE50 // No serialization support on .Net Core.
+using System.Collections.Generic;
 
 
 namespace ServiceStack.Redis.Support.Queue.Implementation
@@ -87,3 +88,4 @@ namespace ServiceStack.Redis.Support.Queue.Implementation
         }
     }
 }
+#endif

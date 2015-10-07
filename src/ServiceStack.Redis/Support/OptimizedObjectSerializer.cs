@@ -1,3 +1,4 @@
+#if !DNXCORE50
 using System;
 using System.IO;
 using System.Text;
@@ -233,4 +234,4 @@ namespace ServiceStack.Redis.Support
 		}
 	}
 }
-
+#endif

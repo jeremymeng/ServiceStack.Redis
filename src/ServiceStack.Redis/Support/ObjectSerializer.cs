@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿#if !DNXCORE50
+using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ServiceStack.Redis.Support
@@ -45,3 +46,4 @@ namespace ServiceStack.Redis.Support
 		}
 	}
 }
+#endif

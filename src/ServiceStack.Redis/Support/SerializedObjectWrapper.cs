@@ -1,3 +1,4 @@
+#if !DNXCORE50 // No serialization support on .Net Core.
 using System;
 
 namespace ServiceStack.Redis.Support
@@ -42,4 +43,4 @@ namespace ServiceStack.Redis.Support
 		}
 	}
 }
-
+#endif

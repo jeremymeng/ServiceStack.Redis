@@ -18,6 +18,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Security;
 using System.Net.Sockets;
+#if DNXCORE50
+using System.Reflection;
+#endif
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
@@ -94,7 +97,11 @@ namespace ServiceStack.Redis
 
                 if (!socket.Connected)
                 {
+#if !DNXCORE50
                     socket.Close();
+#else
+                    socket.Dispose();
+#endif
                     socket = null;
                     DeactivatedAt = DateTime.UtcNow;
                     return;
@@ -137,7 +144,11 @@ namespace ServiceStack.Redis
                     networkStream = sslStream;
                 }
 
+#if !DNXCORE50
                 Bstream = new BufferedStream(networkStream, 16 * 1024);
+#else
+                Bstream = networkStream;
+#endif
 
                 if (!string.IsNullOrEmpty(Password))
                     SendExpectSuccess(Commands.Auth, Password.ToUtf8Bytes());
@@ -237,9 +248,13 @@ namespace ServiceStack.Redis
                 log.Error(ErrorConnect.Fmt(Host, Port));
 
                 if (socket != null)
+#if !DNXCORE50
                     socket.Close();
+#else
+                    socket.Dispose();
+#endif
 
-                socket = null;
+                    socket = null;
 
                 DeactivatedAt = DateTime.UtcNow;
                 var message = "" + Host + ":" + Port;
@@ -574,7 +589,11 @@ namespace ServiceStack.Redis
             lastSocketException = socketEx;
 
             if (socket != null)
+#if !DNXCORE50
                 socket.Close();
+#else
+                socket.Dispose();
+#endif
 
             socket = null;
             return socketEx;

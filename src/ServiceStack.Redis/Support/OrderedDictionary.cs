@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+#if DNXCORE50
+using System.Reflection;
+#endif
 
 namespace ServiceStack.Redis.Support
 {

@@ -426,6 +426,7 @@ namespace ServiceStack.Redis
                 //give it a small chance to die gracefully
                 if (!bgThread.Join(500))
                 {
+#if !DNXCORE50
                     //Ideally we shouldn't get here, but lets try our hardest to clean it up
                     Log.Warn("Interrupting previous Background Thread: " + bgThread.Name);
                     bgThread.Interrupt();
@@ -434,6 +435,7 @@ namespace ServiceStack.Redis
                         Log.Warn(bgThread.Name + " just wont die, so we're now aborting it...");
                         bgThread.Abort();
                     }
+#endif
                 }
                 bgThread = null;
             }
