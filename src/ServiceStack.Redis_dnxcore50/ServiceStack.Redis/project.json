@@ -26,7 +26,7 @@
       "dependencies": {
         "ServiceStack.Interfaces": "4.1.0",
         "ServiceStack.Text": "4.1.0",
-        "ServiceStack.Common.dnxcore": "4.1.0",
+        "ServiceStack.Common": "4.1.0",
         "System.Diagnostics.Debug": "4.0.0",
         "System.Diagnostics.TraceSource": "4.0.0-beta-*",
         "System.Diagnostics.Tools": "4.0.0-beta-*",
