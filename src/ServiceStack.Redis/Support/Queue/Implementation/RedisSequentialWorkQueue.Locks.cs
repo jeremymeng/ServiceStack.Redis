@@ -1,4 +1,5 @@
-﻿using ServiceStack.Redis.Support.Locking;
+﻿#if !DNXCORE50
+using ServiceStack.Redis.Support.Locking;
 
 namespace ServiceStack.Redis.Support.Queue.Implementation
 {
@@ -100,3 +101,4 @@ namespace ServiceStack.Redis.Support.Queue.Implementation
         }
     }
 }
+#endif

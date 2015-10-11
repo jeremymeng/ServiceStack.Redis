@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !DNXCORE50
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using ServiceStack.Redis.Support.Locking;
@@ -350,3 +351,4 @@ namespace ServiceStack.Redis.Support.Queue.Implementation
         }
     }
 }
+#endif

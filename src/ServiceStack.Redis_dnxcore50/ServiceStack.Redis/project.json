@@ -1,7 +1,7 @@
 ﻿{
-  "version": "1.0.0-*",
-  "description": "ServiceStack.Redis.dnxcore50 Class Library",
-  "authors": [ "myumyu" ],
+  "version": "4.1.0-*",
+  "description": "ServiceStack.Redis DnxCore50",
+  "authors": [ "jeremymeng" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
