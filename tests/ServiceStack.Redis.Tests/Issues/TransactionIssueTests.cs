@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+#if !DNXCORE50
 using System.Timers;
+#endif
 using NUnit.Framework;
 using ServiceStack.Text;
 
@@ -116,9 +118,14 @@ namespace ServiceStack.Redis.Tests.Issues
         [Explicit, Test]
         public void Can_queue_large_transaction()
         {
+
+#if !DNXCORE50
             var q = new System.Timers.Timer { Interval = 2 };
             q.Elapsed += CheckConnection;
             q.Enabled = true;
+#else
+            var q = new System.Threading.Timer( { Interval = 2 };
+#endif
 
             Thread.Sleep(30000);
         }

@@ -2,7 +2,9 @@
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
+#if !DNXCORE50
 using System.Timers;
+#endif
 using NUnit.Framework;
 using ServiceStack.Logging;
 using ServiceStack.Text;

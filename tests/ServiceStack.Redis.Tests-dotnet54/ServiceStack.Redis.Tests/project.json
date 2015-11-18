@@ -30,7 +30,12 @@
   "frameworks": {
     "dnxcore50": {
       "dependencies": {
-        "System.Console": "4.0.0-beta-23409"
+        "System.Console": "4.0.0-beta-23409",
+        "System.Globalization": "4.0.11-beta-23409",
+        "System.Reflection": "4.1.0-beta-23409",
+        "System.Reflection.TypeExtensions": "4.0.1-beta-23409",
+        "System.Threading.Timer": "4.0.1-beta-23409",
+        "NUnitLite": "3.0.0"
       }
     }
   }

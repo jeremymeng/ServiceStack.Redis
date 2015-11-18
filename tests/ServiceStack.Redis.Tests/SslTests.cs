@@ -5,6 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Net.Security;
 using System.Net.Sockets;
+#if DNXCORE50
+using System.Reflection;
+#endif
 using System.Text;
 using System.Threading;
 using NUnit.Framework;
@@ -93,7 +96,11 @@ namespace ServiceStack.Redis.Tests
 
             if (!socket.Connected)
             {
+#if !DNXCORE50
                 socket.Close();
+#else
+                socket.Dispose();
+#endif
                 throw new Exception("Could not connect");
             }
 
@@ -115,7 +122,11 @@ namespace ServiceStack.Redis.Tests
 
             if (!socket.Connected)
             {
+#if !DNXCORE50
                 socket.Close();
+#else
+                socket.Dispose();
+#endif
                 throw new Exception("Could not connect");
             }
 
@@ -156,10 +167,14 @@ namespace ServiceStack.Redis.Tests
 
             sslStream.AuthenticateAsClient(Host);
 
+#if !DNXCORE50
             if (!sslStream.IsEncrypted)
                 throw new Exception("Could not establish an encrypted connection to " + Host);
 
             var bstream = new BufferedStream(sslStream, 16 * 1024);
+#else
+            var bstream = sslStream;
+#endif
 
             SendAuth(bstream);
         }

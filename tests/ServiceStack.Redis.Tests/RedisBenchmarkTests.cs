@@ -160,6 +160,7 @@ namespace ServiceStack.Redis.Tests
                 (i, bytes) => redis.Set("eitan" + i.ToString(), bytes));
         }
 
+#if !DNXCORE50
         [Test]
         public void Benchmark_SET_raw_bytes_8MB_Sider()
         {
@@ -169,6 +170,7 @@ namespace ServiceStack.Redis.Tests
             Run("Sider 8MB", 8000000,
                 (i, bytes) => redis.SetRaw("eitan" + i.ToString(), bytes));
         }
+#endif
 
         [Test]
         public void Benchmark_SET_raw_bytes_1MB_ServiceStack()
@@ -179,6 +181,7 @@ namespace ServiceStack.Redis.Tests
                 (i, bytes) => redis.Set("eitan" + i.ToString(), bytes));
         }
 
+#if !DNXCORE50
         [Test]
         public void Benchmark_SET_raw_bytes_1MB_Sider()
         {
@@ -188,6 +191,7 @@ namespace ServiceStack.Redis.Tests
             Run("Sider 1MB", 1000000,
                 (i, bytes) => redis.SetRaw("eitan" + i.ToString(), bytes));
         }
+#endif
 
         [Test]
         public void Benchmark_SET_raw_bytes_100k_ServiceStack()
@@ -198,6 +202,7 @@ namespace ServiceStack.Redis.Tests
                 (i, bytes) => redis.Set("eitan" + i.ToString(), bytes));
         }
 
+#if !DNXCORE50
         [Test]
         public void Benchmark_SET_raw_bytes_100k_Sider()
         {
@@ -207,6 +212,7 @@ namespace ServiceStack.Redis.Tests
             Run("Sider 100K", 100000,
                 (i, bytes) => redis.SetRaw("eitan" + i.ToString(), bytes));
         }
+#endif
 
         [Test]
         public void Benchmark_SET_raw_bytes_10k_ServiceStack()
@@ -217,6 +223,7 @@ namespace ServiceStack.Redis.Tests
                 (i, bytes) => redis.Set("eitan" + i.ToString(), bytes));
         }
 
+#if !DNXCORE50
         [Test]
         public void Benchmark_SET_raw_bytes_10k_Sider()
         {
@@ -226,6 +233,7 @@ namespace ServiceStack.Redis.Tests
             Run("Sider 10K", 10000,
                 (i, bytes) => redis.SetRaw("eitan" + i.ToString(), bytes));
         }
+#endif
 
         [Test]
         public void Benchmark_SET_raw_bytes_1k_ServiceStack()
@@ -236,6 +244,7 @@ namespace ServiceStack.Redis.Tests
                 (i, bytes) => redis.Set("eitan" + i.ToString(), bytes));
         }
 
+#if !DNXCORE50
         [Test]
         public void Benchmark_SET_raw_bytes_1k_Sider()
         {
@@ -245,6 +254,7 @@ namespace ServiceStack.Redis.Tests
             Run("Sider 1K", 1000,
                 (i, bytes) => redis.SetRaw("eitan" + i.ToString(), bytes));
         }
+#endif
     }
 
 }

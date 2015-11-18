@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !DNXCORE50
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using NUnit.Framework;
@@ -183,3 +184,4 @@ namespace ServiceStack.Redis.Tests
 
     }
 }
+#endif
