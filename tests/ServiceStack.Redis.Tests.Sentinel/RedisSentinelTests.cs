@@ -160,7 +160,7 @@ namespace ServiceStack.Redis.Tests.Sentinel
             }
         }
 
-        [Ignore, Test]
+        [Ignore("reason?"), Test]
         public void Run_sentinel_for_10_minutes()
         {
             ILog log = LogManager.GetLogger(GetType());
