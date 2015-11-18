@@ -26,6 +26,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Redis.Tests.Se
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ServiceStack.Redis.Tests-dotnet54", "..\tests\ServiceStack.Redis.Tests-dotnet54\ServiceStack.Redis.Tests\ServiceStack.Redis.Tests-dotnet54.xproj", "{96ECC0AF-4B81-4374-89FA-02577E8A3484}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ServiceStack.Redis.dnxcore50", "ServiceStack.Redis_dnxcore50\ServiceStack.Redis\ServiceStack.Redis.dnxcore50.xproj", "{160C85DA-DD0B-4467-8F56-9A8E65548B77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{33D22751-1882-4236-A66C-91AAD237B9CD}"
+	ProjectSection(SolutionItems) = preProject
+		..\tests\ServiceStack.Redis.Tests-dotnet54\global.json = ..\tests\ServiceStack.Redis.Tests-dotnet54\global.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +97,18 @@ Global
 		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Signed|Any CPU.Build.0 = Debug|Any CPU
 		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Signed|x86.ActiveCfg = Debug|Any CPU
 		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Signed|x86.Build.0 = Debug|Any CPU
+		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Debug|x86.Build.0 = Debug|Any CPU
+		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Release|x86.ActiveCfg = Release|Any CPU
+		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Release|x86.Build.0 = Release|Any CPU
+		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Signed|Any CPU.ActiveCfg = Debug|Any CPU
+		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Signed|Any CPU.Build.0 = Debug|Any CPU
+		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Signed|x86.ActiveCfg = Debug|Any CPU
+		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Signed|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

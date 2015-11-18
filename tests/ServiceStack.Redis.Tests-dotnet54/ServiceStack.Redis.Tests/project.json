@@ -7,11 +7,11 @@
   "licenseUrl": "",
 
   "compile": [
-    "../BasicTest/*.cs"
+    "../../ServiceStack.Redis.Tests/**/*.cs"
   ],
 
   "dependencies": {
-
+    "ServiceStack.Redis": "4.1.0-*"
   },
 
   "configurations": {
