@@ -456,7 +456,7 @@ namespace ServiceStack.Redis
                 if (OnBeforeFlush != null)
                     OnBeforeFlush();
 
-                if (!Env.IsMono && sslStream == null)
+                if (!Env.IsUnix && sslStream == null)
                 {
                     socket.Send(cmdBuffer); //Optimized for Windows
                 }
