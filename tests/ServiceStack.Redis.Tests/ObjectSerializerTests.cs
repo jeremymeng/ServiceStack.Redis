@@ -1,3 +1,4 @@
+#if !DNXCORE50
 using NUnit.Framework;
 using ServiceStack.Redis.Support;
 
@@ -29,3 +30,4 @@ namespace ServiceStack.Redis.Tests
 	}
 
 }
+#endif

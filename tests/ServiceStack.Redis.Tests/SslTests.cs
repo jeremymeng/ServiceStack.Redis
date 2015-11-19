@@ -17,7 +17,8 @@ using ServiceStack.Text;
 
 namespace ServiceStack.Redis.Tests
 {
-    [Ignore("Requires ~/azureconfig.txt")]
+#if !DNXCORE50
+	[Ignore("Requires ~/azureconfig.txt")]
     [TestFixture, Category("Integration")]
     public class SslTests
     {
@@ -346,4 +347,5 @@ namespace ServiceStack.Redis.Tests
             }
         }
     }
+#endif
 }

@@ -110,6 +110,7 @@ namespace ServiceStack.Redis.Tests.Issues
             }
         }
 
+#if !DNXCORE50
         private void CheckConnection(object sender, ElapsedEventArgs e)
         {
             Task.Factory.StartNew(CheckThisConnection);
@@ -119,15 +120,12 @@ namespace ServiceStack.Redis.Tests.Issues
         public void Can_queue_large_transaction()
         {
 
-#if !DNXCORE50
             var q = new System.Timers.Timer { Interval = 2 };
             q.Elapsed += CheckConnection;
             q.Enabled = true;
-#else
-            var q = new System.Threading.Timer( { Interval = 2 };
-#endif
 
             Thread.Sleep(30000);
         }
+#endif
     }
 }

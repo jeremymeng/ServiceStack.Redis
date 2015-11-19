@@ -49,11 +49,7 @@ namespace ServiceStack.Redis.Tests.Examples
 			}
 
 			//Wait at most 1 second for all the threads to complete
-#if !DNXCORE50
 			asyncResults.WaitAll(TimeSpan.FromSeconds(1));
-#else
-			asyncResults.WaitAll(
-#endif
 
 			//Print out the 'atomic-counter' result
 			using (var redisClient = new RedisClient(TestConfig.SingleHost))

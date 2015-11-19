@@ -10,6 +10,10 @@
     "../../ServiceStack.Redis.Tests/**/*.cs"
   ],
 
+  "commands": {
+    "run": "ServiceStack.Redis.Tests"
+  },
+
   "dependencies": {
     "ServiceStack.Redis": "4.1.0-*"
   },

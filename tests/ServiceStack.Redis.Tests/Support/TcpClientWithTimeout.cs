@@ -32,7 +32,7 @@ namespace ServiceStack.Redis.Tests.Support
 			backgroundThread.Start();
 
 			// wait for either the timeout or the thread to finish
-			backgroundThread.Join(timeout);
+			backgroundThread.Join((int)timeout.TotalMilliseconds);
 
 			if (connected)
 			{

@@ -74,7 +74,8 @@ namespace ServiceStack.Redis.Tests
 			Assert.That(resultValue, Is.EquivalentTo(value));
 		}
 
-        [Test]
+#if !DNXCORE50
+		[Test]
         public void Can_Replace_By_Pattern()
         {
             var model = ModelWithIdAndName.Create(1);
@@ -104,8 +105,9 @@ namespace ServiceStack.Redis.Tests
             result2 = cacheClient.Get<string>("string1");
             Assert.That(result2, Is.Null);
         }
+#endif
 
-	    [Test]
+		[Test]
 	    public void Can_GetTimeToLive()
 	    {
             var model = ModelWithIdAndName.Create(1);

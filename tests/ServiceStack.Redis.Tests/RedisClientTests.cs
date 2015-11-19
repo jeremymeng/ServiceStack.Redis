@@ -216,14 +216,15 @@ namespace ServiceStack.Redis.Tests
             var now = Redis.GetServerTime();
 
             now.Kind.PrintDump();
-            now.ToLongDateString().Print();
+#if !DNXCORE50
+			now.ToLongDateString().Print();
             now.ToLongTimeString().Print();
 
             "UtcNow".Print();
             DateTime.UtcNow.ToLongDateString().Print();
             DateTime.UtcNow.ToLongTimeString().Print();
-
-            Assert.That(now.Date, Is.EqualTo(DateTime.UtcNow.Date));
+#endif
+			Assert.That(now.Date, Is.EqualTo(DateTime.UtcNow.Date));
         }
 
 		[Test]
