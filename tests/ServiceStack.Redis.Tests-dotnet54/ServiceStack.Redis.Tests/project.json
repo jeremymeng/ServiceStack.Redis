@@ -21,12 +21,12 @@
   "configurations": {
     "Debug": {
       "compilationOptions": {
-        "define": [ "DEBUG", "TRACE" ]
+        "define": [ "DEBUG", "TRACE", "DNXCORE50" ]
       }
     },
     "Release": {
       "compilationOptions": {
-        "define": [ "TRACE" ]
+        "define": [ "TRACE", "DNXCORE50" ]
       }
     }
   },

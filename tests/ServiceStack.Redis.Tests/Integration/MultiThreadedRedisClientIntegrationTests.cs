@@ -36,7 +36,12 @@ namespace ServiceStack.Redis.Tests.Integration
 				{
 					var clientNo = i;
 					var action = (Action)(() => UseClientAsync(redisClient, clientNo));
+#if !DNXCORE50
 					clientAsyncResults.Add(action.BeginInvoke(null, null));
+#else
+					var f = System.Threading.Tasks.Task.Factory.StartNew(action);
+					clientAsyncResults.Add(f);
+#endif
 				}
 			}
 

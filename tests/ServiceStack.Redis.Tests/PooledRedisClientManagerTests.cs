@@ -303,7 +303,11 @@ namespace ServiceStack.Redis.Tests
 					client4.Dispose();
 				};
 
+#if !DNXCORE50
 				func.BeginInvoke(null, null);
+#else
+				System.Threading.Tasks.Task.Factory.StartNew(func);
+#endif
 
 				var start = DateTime.Now;
 
@@ -335,8 +339,11 @@ namespace ServiceStack.Redis.Tests
 					client3.Dispose();
 				};
 
+#if !DNXCORE50
 				func.BeginInvoke(null, null);
-
+#else
+				System.Threading.Tasks.Task.Factory.StartNew(func);
+#endif
 				var start = DateTime.Now;
 
 				var client4 = manager.GetReadOnlyClient();
@@ -404,7 +411,12 @@ namespace ServiceStack.Redis.Tests
 				{
 					var clientNo = i;
 					var action = (Action)(() => UseClient(manager, clientNo, clientUsageMap));
+#if !DNXCORE50
 					clientAsyncResults.Add(action.BeginInvoke(null, null));
+#else
+					var f = System.Threading.Tasks.Task.Factory.StartNew(action);
+					clientAsyncResults.Add(f);
+#endif
 				}
 			}
 

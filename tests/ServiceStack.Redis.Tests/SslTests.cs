@@ -300,9 +300,14 @@ namespace ServiceStack.Redis.Tests
                 {
                     var clientNo = i;
                     var action = (Action)(() => UseClientAsync(manager, clientNo, testData));
-                    clientAsyncResults.Add(action.BeginInvoke(null, null));
-                }
-            }
+#if !DNXCORE50
+					clientAsyncResults.Add(action.BeginInvoke(null, null));
+#else
+					var f = System.Threading.Tasks.Task.Factory.StartNew(action);
+					clientAsyncResults.Add(f);
+#endif
+				}
+			}
 
             WaitHandle.WaitAll(clientAsyncResults.ConvertAll(x => x.AsyncWaitHandle).ToArray());
 
