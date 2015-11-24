@@ -65,7 +65,12 @@ namespace ServiceStack.Redis.Tests.Support
 		{
 			try
 			{
+#if !DNXCORE50
 				connection = new TcpClient(hostname, port);
+#else
+				var client = new TcpClient();
+				client.ConnectAsync(hostname, port).Wait();
+#endif
 				// record that it succeeded, for the main thread to return to the caller
 				connected = true;
 			}

@@ -91,11 +91,15 @@ namespace ServiceStack.Redis
                 }
                 else
                 {
-                    var connectResult = socket.BeginConnect(Host, Port, null, null);
 #if !DNXCORE50
+                    var connectResult = socket.BeginConnect(Host, Port, null, null);
                     connectResult.AsyncWaitHandle.WaitOne(ConnectTimeout, true);
 #else
-                    connectResult.AsyncWaitHandle.WaitOne(ConnectTimeout);
+                    var args = new SocketAsyncEventArgs();
+                    args.RemoteEndPoint = new DnsEndPoint(Host, Port);
+                    args.Completed += (_, __) => { };
+                    socket.ConnectAsync(args);
+                    System.Threading.Tasks.Task.WaitAny(System.Threading.Tasks.Task.Delay(ConnectTimeout));
 #endif
                 }
 
