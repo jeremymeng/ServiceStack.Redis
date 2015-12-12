@@ -17,7 +17,7 @@
   },
 
   "frameworks": {
-    "dnxcore50": {
+    "dotnet5.5": {
       "compilationOptions": {
         "define": [ "DNXCORE50" ],
         "allowUnsafe": true,
