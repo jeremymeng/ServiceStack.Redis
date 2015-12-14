@@ -171,11 +171,9 @@ namespace ServiceStack.Redis.Tests
 #if !DNXCORE50
             if (!sslStream.IsEncrypted)
                 throw new Exception("Could not establish an encrypted connection to " + Host);
+#endif
 
             var bstream = new BufferedStream(sslStream, 16 * 1024);
-#else
-            var bstream = sslStream;
-#endif
 
             SendAuth(bstream);
         }

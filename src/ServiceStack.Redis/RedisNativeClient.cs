@@ -62,11 +62,7 @@ namespace ServiceStack.Redis
         public bool HadExceptions { get { return deactivatedAtTicks > 0; } }
 
         protected Socket socket;
-#if !DNXCORE50
         protected BufferedStream Bstream;
-#else
-        protected Stream Bstream;
-#endif
         protected SslStream sslStream;
 
         private IRedisTransactionBase transaction;

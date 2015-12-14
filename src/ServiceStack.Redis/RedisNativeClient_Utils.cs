@@ -153,11 +153,7 @@ namespace ServiceStack.Redis
                     networkStream = sslStream;
                 }
 
-#if !DNXCORE50
                 Bstream = new BufferedStream(networkStream, 16 * 1024);
-#else
-                Bstream = networkStream;
-#endif
 
                 if (!string.IsNullOrEmpty(Password))
                     SendExpectSuccess(Commands.Auth, Password.ToUtf8Bytes());
