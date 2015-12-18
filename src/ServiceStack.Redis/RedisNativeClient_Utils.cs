@@ -64,6 +64,14 @@ namespace ServiceStack.Redis
             }
         }
 
+#if DNXCORE50
+        private ManualResetEvent _signal;
+        private ManualResetEvent LazyEnsureSignalInitialized()
+        {
+            return LazyInitializer.EnsureInitialized(ref _signal, () => new ManualResetEvent(false));
+        }
+#endif
+
         private void Connect()
         {
             if (UsageTimer == null)
@@ -97,9 +105,11 @@ namespace ServiceStack.Redis
 #else
                     var args = new SocketAsyncEventArgs();
                     args.RemoteEndPoint = new DnsEndPoint(Host, Port);
-                    args.Completed += (_, __) => { };
+                    var signal = LazyEnsureSignalInitialized();
+                    signal.Reset();
+                    args.Completed += (_, __) => { signal.Set(); };
                     socket.ConnectAsync(args);
-                    System.Threading.Tasks.Task.WaitAny(System.Threading.Tasks.Task.Delay(ConnectTimeout));
+                    signal.WaitOne(ConnectTimeout);
 #endif
                 }
 

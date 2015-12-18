@@ -2169,6 +2169,13 @@ namespace ServiceStack.Redis
             {
                 //dispose un managed resources
                 DisposeConnection();
+#if DNXCORE50
+                if (_signal != null)
+                {
+                    _signal.Dispose();
+                    _signal = null;
+                }
+#endif
             }
         }
 
