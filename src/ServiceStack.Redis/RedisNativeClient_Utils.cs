@@ -154,7 +154,7 @@ namespace ServiceStack.Redis
                         });
                     }
 
-                    sslStream.AuthenticateAsClient(Host);
+                    sslStream.AuthenticateAsClientAsync(Host).Wait();
 #if !DNXCORE50
                     if (!sslStream.IsEncrypted)
                         throw new Exception("Could not establish an encrypted connection to " + Host);

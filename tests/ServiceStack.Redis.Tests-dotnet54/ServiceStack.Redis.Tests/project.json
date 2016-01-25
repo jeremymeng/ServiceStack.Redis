@@ -1,7 +1,7 @@
 {
   "version": "1.0.0-*",
-  "description": "StackExchange.Redis.BasicTest dnxcore50",
-  "authors": [ "jeremymeng" ],
+  "description": "ServiceStack.Redis.Tests .NET Core",
+  "authors": [ "" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
@@ -14,8 +14,12 @@
     "run": "ServiceStack.Redis.Tests"
   },
 
+    "compilationOptions": {
+        "emitEntryPoint": true
+    },
+
   "dependencies": {
-    "ServiceStack.Redis": "4.1.0-*"
+    "ServiceStack.Redis": { "target": "project", "version": "4.1.0-rc2", "type": "build" }
   },
 
   "configurations": {
@@ -34,11 +38,11 @@
   "frameworks": {
     "dnxcore50": {
       "dependencies": {
-        "System.Console": "4.0.0-beta-23516",
-        "System.Globalization": "4.0.11-beta-23516",
-        "System.Reflection": "4.1.0-beta-23516",
-        "System.Reflection.TypeExtensions": "4.1.0-beta-23516",
-        "System.Threading.Timer": "4.0.1-beta-23516",
+        "System.Console": "4.0.0-rc2-23722",
+        "System.Globalization": "4.0.11-rc2-23722",
+        "System.Reflection": "4.1.0-rc2-23722",
+        "System.Reflection.TypeExtensions": "4.1.0-rc2-23722",
+        "System.Threading.Timer": "4.0.1-rc2-23722",
         "NUnitLite": "3.0.0"
       }
     }
