@@ -1,8 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-#if DNXCORE50
-// Temporary workaround for the missing BufferedStream in .Net Core.  It is being added back in RC2.
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Threading;
@@ -649,24 +647,33 @@ namespace System.IO
 
         public override int ReadByte()
         {
+            return _readPos != _readLen ?
+                _buffer[_readPos++] :
+                ReadByteSlow();
+        }
+
+        private int ReadByteSlow()
+        {
+            Debug.Assert(_readPos == _readLen);
+
+            // We want to check for whether the underlying stream has been closed and whether
+            // it's readable, but we only need to do so if we don't have data in our buffer,
+            // as any data we have came from reading it from an open stream, and we don't
+            // care if the stream has been closed or become unreadable since. Further, if
+            // the stream is closed, its read buffer is flushed, so we'll take this slow path.
             EnsureNotClosed();
             EnsureCanRead();
 
-            if (_readPos == _readLen)
-            {
-                if (_writePos > 0)
-                    FlushWrite();
+            if (_writePos > 0)
+                FlushWrite();
 
-                EnsureBufferAllocated();
-                _readLen = _stream.Read(_buffer, 0, _bufferSize);
-                _readPos = 0;
-            }
-
-            if (_readPos == _readLen)
+            EnsureBufferAllocated();
+            _readLen = _stream.Read(_buffer, 0, _bufferSize);
+            if (_readLen == 0)
                 return -1;
 
-            int b = _buffer[_readPos++];
-            return b;
+            _readPos = 0;
+            return _buffer[_readPos++];
         }
 
         private void WriteToBuffer(byte[] array, ref int offset, ref int count)
@@ -715,7 +722,7 @@ namespace System.IO
             if (_writePos == 0)
                 ClearReadBufferBeforeWrite();
 
-#region Write algorithm comment
+            #region Write algorithm comment
             // We need to use the buffer, while avoiding unnecessary buffer usage / memory copies.
             // We ASSUME that memory copies are much cheaper than writes to the underlying stream, so if an extra copy is
             // guaranteed to reduce the number of writes, we prefer it.
@@ -773,7 +780,7 @@ namespace System.IO
             //
             // A nice property (*) of this heuristic is that it will always succeed if the user data completely fits into the
             // available buffer, i.e. if count < (_bufferSize - _writePos).
-#endregion Write algorithm comment
+            #endregion Write algorithm comment
 
             Debug.Assert(_writePos < _bufferSize);
 
@@ -1076,4 +1083,3 @@ namespace System.IO
         }
     }  // class BufferedStream
 }  // namespace
-#endif
