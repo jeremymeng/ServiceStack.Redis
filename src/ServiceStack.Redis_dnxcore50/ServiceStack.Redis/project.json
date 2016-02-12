@@ -14,7 +14,7 @@
   ],
 
   "dependencies": {
-    "NETStandard.Library": "1.0.0-rc2-23722"
+    "Microsoft.NETCore.Platforms": "1.0.1-rc2-*"
   },
 
   "frameworks": {
@@ -28,30 +28,30 @@
         "ServiceStack.Interfaces": "4.1.0-rc2",
         "ServiceStack.Text": "4.1.0-rc2",
         "ServiceStack.Common": "4.1.0-rc2",
-        "System.Diagnostics.Debug": "4.0.11-rc2-23722",
-        "System.Diagnostics.Contracts": "4.0.1-rc2-23722",
-        "System.Diagnostics.TraceSource": "4.0.0-rc2-23722",
-        "System.IO": "4.1.0-rc2-23722",
-        "System.IO.Compression": "4.1.0-rc2-23722",
-        "System.Globalization": "4.0.11-rc2-23722",
-        "System.Linq": "4.0.1-rc2-23722",
-        "System.Net.Primitives": "4.0.11-rc2-23722",
-        "System.Net.Sockets": "4.1.0-rc2-23722",
-        "System.Net.Security": "4.0.0-rc2-23722",
-        "System.Net.NameResolution": "4.0.0-rc2-23722",
-        "System.Reflection": "4.1.0-rc2-23722",
-        "System.Reflection.Emit": "4.0.1-rc2-23722",
-        "System.Reflection.TypeExtensions": "4.1.0-rc2-23722",
-        "System.Reflection.Primitives": "4.0.1-rc2-23722",
-        "System.Reflection.Emit.Lightweight": "4.0.1-rc2-23722",
-        "System.Security.Cryptography.Algorithms": "4.0.0-rc2-23722",
-        "System.Security.Cryptography.X509Certificates": "4.0.0-rc2-23722",
-        "System.Text.RegularExpressions": "4.0.11-rc2-23722",
-        "System.Threading": "4.0.11-rc2-23722",
-        "System.Threading.Thread": "4.0.0-rc2-23722",
-        "System.Threading.ThreadPool": "4.0.10-rc2-23722",
-        "System.Threading.Timer": "4.0.1-rc2-23722",
-        "System.Threading.Tasks": "4.0.11-rc2-23722"
+        "System.Diagnostics.Debug": "4.0.11-rc2-*",
+        "System.Diagnostics.Contracts": "4.0.1-rc2-*",
+        "System.Diagnostics.TraceSource": "4.0.0-rc2-*",
+        "System.IO": "4.1.0-rc2-*",
+        "System.IO.Compression": "4.1.0-rc2-*",
+        "System.Globalization": "4.0.11-rc2-*",
+        "System.Linq": "4.1.0-rc2-*",
+        "System.Net.Primitives": "4.0.11-rc2-*",
+        "System.Net.Sockets": "4.1.0-rc2-*",
+        "System.Net.Security": "4.0.0-rc2-*",
+        "System.Net.NameResolution": "4.0.0-rc2-*",
+        "System.Reflection": "4.1.0-rc2-*",
+        "System.Reflection.Emit": "4.0.1-rc2-*",
+        "System.Reflection.TypeExtensions": "4.1.0-rc2-*",
+        "System.Reflection.Primitives": "4.0.1-rc2-*",
+        "System.Reflection.Emit.Lightweight": "4.0.1-rc2-*",
+        "System.Security.Cryptography.Algorithms": "4.0.0-rc2-*",
+        "System.Security.Cryptography.X509Certificates": "4.0.0-rc2-*",
+        "System.Text.RegularExpressions": "4.0.12-rc2-*",
+        "System.Threading": "4.0.11-rc2-*",
+        "System.Threading.Thread": "4.0.0-rc2-*",
+        "System.Threading.ThreadPool": "4.0.10-rc2-*",
+        "System.Threading.Timer": "4.0.1-rc2-*",
+        "System.Threading.Tasks": "4.0.11-rc2-*"
       }
     }
   }

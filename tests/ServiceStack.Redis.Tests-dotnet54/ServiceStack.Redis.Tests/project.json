@@ -19,6 +19,7 @@
     },
 
   "dependencies": {
+    "Microsoft.NETCore.Platforms": "1.0.1-rc2-*",
     "ServiceStack.Redis": { "target": "project", "version": "4.1.0-rc2", "type": "build" }
   },
 
@@ -38,11 +39,11 @@
   "frameworks": {
     "dnxcore50": {
       "dependencies": {
-        "System.Console": "4.0.0-rc2-23722",
-        "System.Globalization": "4.0.11-rc2-23722",
-        "System.Reflection": "4.1.0-rc2-23722",
-        "System.Reflection.TypeExtensions": "4.1.0-rc2-23722",
-        "System.Threading.Timer": "4.0.1-rc2-23722",
+        "System.Console": "4.0.0-rc2-*",
+        "System.Globalization": "4.0.11-rc2-*",
+        "System.Reflection": "4.1.0-rc2-*",
+        "System.Reflection.TypeExtensions": "4.1.0-rc2-*",
+        "System.Threading.Timer": "4.0.1-rc2-*",
         "NUnitLite": "3.0.0"
       }
     }

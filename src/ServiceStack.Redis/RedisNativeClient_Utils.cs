@@ -86,32 +86,34 @@ namespace ServiceStack.Redis
                 }
             }
 
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
-            {
-                SendTimeout = SendTimeout,
-                ReceiveTimeout = ReceiveTimeout
-            };
             try
             {
+#if !DNXCORE50
+                socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+                {
+                    SendTimeout = SendTimeout,
+                    ReceiveTimeout = ReceiveTimeout
+                };
+
                 if (ConnectTimeout <= 0)
                 {
                     socket.Connect(Host, Port);
                 }
                 else
                 {
-#if !DNXCORE50
                     var connectResult = socket.BeginConnect(Host, Port, null, null);
                     connectResult.AsyncWaitHandle.WaitOne(ConnectTimeout, true);
-#else
-                    var args = new SocketAsyncEventArgs();
-                    args.RemoteEndPoint = new DnsEndPoint(Host, Port);
-                    var signal = LazyEnsureSignalInitialized();
-                    signal.Reset();
-                    args.Completed += (_, __) => { signal.Set(); };
-                    socket.ConnectAsync(args);
-                    signal.WaitOne(ConnectTimeout);
-#endif
                 }
+#else
+                var args = new SocketAsyncEventArgs();
+                args.RemoteEndPoint = new DnsEndPoint(Host, Port);
+                var signal = LazyEnsureSignalInitialized();
+                signal.Reset();
+                args.Completed += (_, __) => { signal.Set(); };
+                Socket.ConnectAsync(SocketType.Stream, ProtocolType.Tcp, args);
+                signal.WaitOne(ConnectTimeout <= 0 ? -1 : ConnectTimeout);
+                socket = args.ConnectSocket;
+#endif
 
                 if (!socket.Connected)
                 {
