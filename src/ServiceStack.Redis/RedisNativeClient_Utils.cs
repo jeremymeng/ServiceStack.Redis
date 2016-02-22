@@ -115,13 +115,16 @@ namespace ServiceStack.Redis
                 socket = args.ConnectSocket;
 #endif
 
-                if (!socket.Connected)
+                if (socket == null || !socket.Connected)
                 {
+                    if (socket != null)
+                    {
 #if !DNXCORE50
-                    socket.Close();
+                        socket.Close();
 #else
-                    socket.Dispose();
+                        socket.Dispose();
 #endif
+                    }
                     socket = null;
                     DeactivatedAt = DateTime.UtcNow;
                     return;
