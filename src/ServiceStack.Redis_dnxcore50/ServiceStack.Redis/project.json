@@ -14,11 +14,11 @@
   ],
 
   "dependencies": {
-    "Microsoft.NETCore.Platforms": "1.0.1-rc2-*"
+    "NETStandard.Library": "1.5.0-rc2-*"
   },
 
   "frameworks": {
-    "dnxcore50": {
+    "netstandard1.5": {
       "compilationOptions": {
         "define": [ "DNXCORE50" ],
         "allowUnsafe": true,
@@ -41,17 +41,17 @@
         "System.Net.NameResolution": "4.0.0-rc2-*",
         "System.Reflection": "4.1.0-rc2-*",
         "System.Reflection.Emit": "4.0.1-rc2-*",
-        "System.Reflection.TypeExtensions": "4.1.0-rc2-*",
-        "System.Reflection.Primitives": "4.0.1-rc2-*",
         "System.Reflection.Emit.Lightweight": "4.0.1-rc2-*",
-        "System.Security.Cryptography.Algorithms": "4.0.0-rc2-*",
-        "System.Security.Cryptography.X509Certificates": "4.0.0-rc2-*",
+        "System.Reflection.Primitives": "4.0.1-rc2-*",
+        "System.Reflection.TypeExtensions": "4.1.0-rc2-*",
+        "System.Security.Cryptography.Algorithms": "4.1.0-rc2-*",
+        "System.Security.Cryptography.X509Certificates": "4.1.0-rc2-*",
         "System.Text.RegularExpressions": "4.0.12-rc2-*",
         "System.Threading": "4.0.11-rc2-*",
         "System.Threading.Thread": "4.0.0-rc2-*",
         "System.Threading.ThreadPool": "4.0.10-rc2-*",
-        "System.Threading.Timer": "4.0.1-rc2-*",
-        "System.Threading.Tasks": "4.0.11-rc2-*"
+        "System.Threading.Tasks": "4.0.11-rc2-*",
+        "System.Threading.Timer": "4.0.1-rc2-*"
       }
     }
   }
