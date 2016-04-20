@@ -1,5 +1,5 @@
 ﻿{
-  "version": "4.1.0-rc2",
+  "version": "4.1.0-netcore-rc2-1",
   "description": "ServiceStack.Redis .NET Core",
   "authors": [ "" ],
   "tags": [ "" ],
