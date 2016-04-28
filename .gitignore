@@ -46,3 +46,6 @@ tests/ServiceStack.Redis.Tests/azureconfig.txt
 *.rdb
 *.dat
 *.rdb
+
+project.lock.json
+launchSettings.json
