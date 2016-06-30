@@ -37,7 +37,7 @@ namespace ServiceStack.Redis.Tests.Support
 			if (connected)
 			{
 				// it succeeded, so return the connection
-#if !DNXCORE50
+#if !NET_CORE
 				backgroundThread.Abort();
 #endif
 				return connection;
@@ -45,7 +45,7 @@ namespace ServiceStack.Redis.Tests.Support
 			if (exception != null)
 			{
 				// it crashed, so return the exception to the caller
-#if !DNXCORE50
+#if !NET_CORE
 				backgroundThread.Abort();
 #endif
 				throw exception;
@@ -53,7 +53,7 @@ namespace ServiceStack.Redis.Tests.Support
 			else
 			{
 				// if it gets here, it timed out, so abort the thread and throw an exception
-#if !DNXCORE50
+#if !NET_CORE
 				backgroundThread.Abort();
 #endif
 				var message = string.Format("TcpClient connection to {0}:{1} timed out",
@@ -65,7 +65,7 @@ namespace ServiceStack.Redis.Tests.Support
 		{
 			try
 			{
-#if !DNXCORE50
+#if !NET_CORE
 				connection = new TcpClient(hostname, port);
 #else
 				var client = new TcpClient();
@@ -102,7 +102,7 @@ namespace ServiceStack.Redis.Tests.Support
 			stream.Read(readbuf, 0, 10); // read
 
 			// Disconnect nicely
-#if !DNXCORE50
+#if !NET_CORE
 			stream.Close(); // workaround for a .net bug: http://support.microsoft.com/kb/821625
 			connection.Close();
 #else

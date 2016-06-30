@@ -2169,7 +2169,7 @@ namespace ServiceStack.Redis
             {
                 //dispose un managed resources
                 DisposeConnection();
-#if DNXCORE50
+#if NET_CORE
                 if (_signal != null)
                 {
                     _signal.Dispose();
@@ -2206,7 +2206,7 @@ namespace ServiceStack.Redis
             {
                 // workaround for a .net bug: http://support.microsoft.com/kb/821625
                 if (Bstream != null)
-#if !DNXCORE50
+#if !NET_CORE
                     Bstream.Close();
 #else
                     Bstream.Dispose();
@@ -2216,7 +2216,7 @@ namespace ServiceStack.Redis
             try
             {
                 if (sslStream != null)
-#if !DNXCORE50
+#if !NET_CORE
                     sslStream.Close();
 #else
                     sslStream.Dispose();
@@ -2226,7 +2226,7 @@ namespace ServiceStack.Redis
             try
             {
                 if (socket != null)
-#if !DNXCORE50
+#if !NET_CORE
                     socket.Close();
 #else
                     socket.Dispose();

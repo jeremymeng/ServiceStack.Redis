@@ -1,7 +1,5 @@
 {
-    "sdk": {
-        "version": "1.0.0-rc2-16357",
-        "runtime": "coreclr",
-        "architecture": "x86"
-    }
+  "sdk": {
+    "version": "1.0.0-preview2-003121"
+  }
 }

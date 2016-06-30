@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
-#if !DNXCORE50
+#if !NET_CORE
 using System.Timers;
 #endif
 using NUnit.Framework;

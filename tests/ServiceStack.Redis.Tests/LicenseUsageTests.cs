@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Service Stack LLC. All Rights Reserved.
 // License: https://raw.github.com/ServiceStack/ServiceStack/master/license.txt
 
-#if !DNXCORE50
+#if !NET_CORE
 using System.Data;
 using NUnit.Framework;
 using ServiceStack.Configuration;

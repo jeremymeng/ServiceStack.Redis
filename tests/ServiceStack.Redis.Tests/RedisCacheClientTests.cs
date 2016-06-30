@@ -74,7 +74,7 @@ namespace ServiceStack.Redis.Tests
 			Assert.That(resultValue, Is.EquivalentTo(value));
 		}
 
-#if !DNXCORE50
+#if !NET_CORE
 		[Test]
         public void Can_Replace_By_Pattern()
         {

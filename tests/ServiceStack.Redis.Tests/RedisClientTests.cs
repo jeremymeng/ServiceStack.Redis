@@ -216,7 +216,7 @@ namespace ServiceStack.Redis.Tests
             var now = Redis.GetServerTime();
 
             now.Kind.PrintDump();
-#if !DNXCORE50
+#if !NET_CORE
 			now.ToLongDateString().Print();
             now.ToLongTimeString().Print();
 

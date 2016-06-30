@@ -160,7 +160,7 @@ namespace ServiceStack.Redis.Tests
                 (i, bytes) => redis.Set("eitan" + i.ToString(), bytes));
         }
 
-#if !DNXCORE50
+#if !NET_CORE
         [Test]
         public void Benchmark_SET_raw_bytes_8MB_Sider()
         {
@@ -181,7 +181,7 @@ namespace ServiceStack.Redis.Tests
                 (i, bytes) => redis.Set("eitan" + i.ToString(), bytes));
         }
 
-#if !DNXCORE50
+#if !NET_CORE
         [Test]
         public void Benchmark_SET_raw_bytes_1MB_Sider()
         {
@@ -202,7 +202,7 @@ namespace ServiceStack.Redis.Tests
                 (i, bytes) => redis.Set("eitan" + i.ToString(), bytes));
         }
 
-#if !DNXCORE50
+#if !NET_CORE
         [Test]
         public void Benchmark_SET_raw_bytes_100k_Sider()
         {
@@ -223,7 +223,7 @@ namespace ServiceStack.Redis.Tests
                 (i, bytes) => redis.Set("eitan" + i.ToString(), bytes));
         }
 
-#if !DNXCORE50
+#if !NET_CORE
         [Test]
         public void Benchmark_SET_raw_bytes_10k_Sider()
         {
@@ -244,7 +244,7 @@ namespace ServiceStack.Redis.Tests
                 (i, bytes) => redis.Set("eitan" + i.ToString(), bytes));
         }
 
-#if !DNXCORE50
+#if !NET_CORE
         [Test]
         public void Benchmark_SET_raw_bytes_1k_Sider()
         {

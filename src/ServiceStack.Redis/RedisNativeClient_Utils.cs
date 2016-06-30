@@ -18,7 +18,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Security;
 using System.Net.Sockets;
-#if DNXCORE50
+#if NET_CORE
 using System.Reflection;
 #endif
 using System.Security.Cryptography;
@@ -64,7 +64,7 @@ namespace ServiceStack.Redis
             }
         }
 
-#if DNXCORE50
+#if NET_CORE
         private ManualResetEvent _signal;
         private ManualResetEvent LazyEnsureSignalInitialized()
         {
@@ -88,7 +88,7 @@ namespace ServiceStack.Redis
 
             try
             {
-#if !DNXCORE50
+#if !NET_CORE
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
                 {
                     SendTimeout = SendTimeout,
@@ -119,7 +119,7 @@ namespace ServiceStack.Redis
                 {
                     if (socket != null)
                     {
-#if !DNXCORE50
+#if !NET_CORE
                         socket.Close();
 #else
                         socket.Dispose();
@@ -160,7 +160,7 @@ namespace ServiceStack.Redis
                     }
 
                     sslStream.AuthenticateAsClientAsync(Host).Wait();
-#if !DNXCORE50
+#if !NET_CORE
                     if (!sslStream.IsEncrypted)
                         throw new Exception("Could not establish an encrypted connection to " + Host);
 #endif
@@ -268,7 +268,7 @@ namespace ServiceStack.Redis
                 log.Error(ErrorConnect.Fmt(Host, Port));
 
                 if (socket != null)
-#if !DNXCORE50
+#if !NET_CORE
                     socket.Close();
 #else
                     socket.Dispose();
@@ -631,7 +631,7 @@ namespace ServiceStack.Redis
             lastSocketException = socketEx;
 
             if (socket != null)
-#if !DNXCORE50
+#if !NET_CORE
                 socket.Close();
 #else
                 socket.Dispose();
@@ -1235,7 +1235,7 @@ namespace ServiceStack.Redis
                 throw new ArgumentNullException("luaBody");
 
             byte[] buffer = Encoding.UTF8.GetBytes(luaBody);
-#if !DNXCORE50
+#if !NET_CORE
             var cryptoTransformSHA1 = new SHA1CryptoServiceProvider();
             return BitConverter.ToString(cryptoTransformSHA1.ComputeHash(buffer)).Replace("-", "");
 #else

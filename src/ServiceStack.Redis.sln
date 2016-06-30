@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24709.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{38F69F8F-9303-4BAF-B081-D28339163E07}"
 	ProjectSection(SolutionItems) = preProject
@@ -24,14 +24,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console.Tests", "..\tests\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Redis.Tests.Sentinel", "..\tests\ServiceStack.Redis.Tests.Sentinel\ServiceStack.Redis.Tests.Sentinel.csproj", "{91C55091-A946-49B5-9517-8794EBCC5784}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ServiceStack.Redis.Tests-dotnet54", "..\tests\ServiceStack.Redis.Tests-dotnet54\ServiceStack.Redis.Tests\ServiceStack.Redis.Tests-dotnet54.xproj", "{96ECC0AF-4B81-4374-89FA-02577E8A3484}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ServiceStack.Redis.dnxcore50", "ServiceStack.Redis_dnxcore50\ServiceStack.Redis\ServiceStack.Redis.dnxcore50.xproj", "{160C85DA-DD0B-4467-8F56-9A8E65548B77}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{33D22751-1882-4236-A66C-91AAD237B9CD}"
 	ProjectSection(SolutionItems) = preProject
 		..\tests\ServiceStack.Redis.Tests-dotnet54\global.json = ..\tests\ServiceStack.Redis.Tests-dotnet54\global.json
 	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ServiceStack.Redis.netcore", "ServiceStack.Redis_dnxcore50\ServiceStack.Redis\ServiceStack.Redis.netcore.xproj", "{C931A79E-FFD0-4495-AB77-91A5B090CD10}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ServiceStack.Redis.Tests.netcore", "..\tests\ServiceStack.Redis.Tests-dotnet54\ServiceStack.Redis.Tests\ServiceStack.Redis.Tests.netcore.xproj", "{E568014E-2244-4EBD-88FF-22E9D84C588A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,30 +85,30 @@ Global
 		{91C55091-A946-49B5-9517-8794EBCC5784}.Signed|Any CPU.ActiveCfg = Release|Any CPU
 		{91C55091-A946-49B5-9517-8794EBCC5784}.Signed|Any CPU.Build.0 = Release|Any CPU
 		{91C55091-A946-49B5-9517-8794EBCC5784}.Signed|x86.ActiveCfg = Release|Any CPU
-		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Debug|x86.Build.0 = Debug|Any CPU
-		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Release|x86.ActiveCfg = Release|Any CPU
-		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Release|x86.Build.0 = Release|Any CPU
-		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Signed|Any CPU.ActiveCfg = Debug|Any CPU
-		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Signed|Any CPU.Build.0 = Debug|Any CPU
-		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Signed|x86.ActiveCfg = Debug|Any CPU
-		{96ECC0AF-4B81-4374-89FA-02577E8A3484}.Signed|x86.Build.0 = Debug|Any CPU
-		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Debug|x86.Build.0 = Debug|Any CPU
-		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Release|Any CPU.Build.0 = Release|Any CPU
-		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Release|x86.ActiveCfg = Release|Any CPU
-		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Release|x86.Build.0 = Release|Any CPU
-		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Signed|Any CPU.ActiveCfg = Debug|Any CPU
-		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Signed|Any CPU.Build.0 = Debug|Any CPU
-		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Signed|x86.ActiveCfg = Debug|Any CPU
-		{160C85DA-DD0B-4467-8F56-9A8E65548B77}.Signed|x86.Build.0 = Debug|Any CPU
+		{C931A79E-FFD0-4495-AB77-91A5B090CD10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C931A79E-FFD0-4495-AB77-91A5B090CD10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C931A79E-FFD0-4495-AB77-91A5B090CD10}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C931A79E-FFD0-4495-AB77-91A5B090CD10}.Debug|x86.Build.0 = Debug|Any CPU
+		{C931A79E-FFD0-4495-AB77-91A5B090CD10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C931A79E-FFD0-4495-AB77-91A5B090CD10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C931A79E-FFD0-4495-AB77-91A5B090CD10}.Release|x86.ActiveCfg = Release|Any CPU
+		{C931A79E-FFD0-4495-AB77-91A5B090CD10}.Release|x86.Build.0 = Release|Any CPU
+		{C931A79E-FFD0-4495-AB77-91A5B090CD10}.Signed|Any CPU.ActiveCfg = Debug|Any CPU
+		{C931A79E-FFD0-4495-AB77-91A5B090CD10}.Signed|Any CPU.Build.0 = Debug|Any CPU
+		{C931A79E-FFD0-4495-AB77-91A5B090CD10}.Signed|x86.ActiveCfg = Debug|Any CPU
+		{C931A79E-FFD0-4495-AB77-91A5B090CD10}.Signed|x86.Build.0 = Debug|Any CPU
+		{E568014E-2244-4EBD-88FF-22E9D84C588A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E568014E-2244-4EBD-88FF-22E9D84C588A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E568014E-2244-4EBD-88FF-22E9D84C588A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E568014E-2244-4EBD-88FF-22E9D84C588A}.Debug|x86.Build.0 = Debug|Any CPU
+		{E568014E-2244-4EBD-88FF-22E9D84C588A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E568014E-2244-4EBD-88FF-22E9D84C588A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E568014E-2244-4EBD-88FF-22E9D84C588A}.Release|x86.ActiveCfg = Release|Any CPU
+		{E568014E-2244-4EBD-88FF-22E9D84C588A}.Release|x86.Build.0 = Release|Any CPU
+		{E568014E-2244-4EBD-88FF-22E9D84C588A}.Signed|Any CPU.ActiveCfg = Debug|Any CPU
+		{E568014E-2244-4EBD-88FF-22E9D84C588A}.Signed|Any CPU.Build.0 = Debug|Any CPU
+		{E568014E-2244-4EBD-88FF-22E9D84C588A}.Signed|x86.ActiveCfg = Debug|Any CPU
+		{E568014E-2244-4EBD-88FF-22E9D84C588A}.Signed|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

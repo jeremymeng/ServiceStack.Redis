@@ -1,4 +1,4 @@
-﻿#if !DNXCORE50
+﻿#if !NET_CORE
 using ServiceStack.Redis.Support.Locking;
 
 namespace ServiceStack.Redis.Support.Queue.Implementation

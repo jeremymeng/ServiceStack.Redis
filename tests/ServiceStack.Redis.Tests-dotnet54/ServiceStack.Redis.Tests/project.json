@@ -2,50 +2,44 @@
   "version": "1.0.0-*",
   "description": "ServiceStack.Redis.Tests .NET Core",
   "authors": [ "" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
 
-  "compile": [
-    "../../ServiceStack.Redis.Tests/**/*.cs"
-  ],
-
-  "commands": {
-    "run": "ServiceStack.Redis.Tests"
+  "buildOptions": {
+    "compile": {
+      "include": [
+        "../../ServiceStack.Redis.Tests/**/*.cs"
+      ]
+    },
+    "define": [ "NET_CORE" ]
   },
 
-    "compilationOptions": {
-        "emitEntryPoint": true
-    },
+  "testRunner":"nunit",
 
   "dependencies": {
-    "Microsoft.NETCore.Platforms": "1.0.1-rc2-*",
-    "ServiceStack.Redis": { "target": "project", "version": "4.1.0-rc2", "type": "build" }
-  },
-
-  "configurations": {
-    "Debug": {
-      "compilationOptions": {
-        "define": [ "DEBUG", "TRACE", "DNXCORE50" ]
-      }
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.0"
     },
-    "Release": {
-      "compilationOptions": {
-        "define": [ "TRACE", "DNXCORE50" ]
-      }
-    }
+    "ServiceStack.Redis": {
+      "target": "project",
+      "version": ""
+    },
+    "NUnit": "3.4.1",
+    "dotnet-test-nunit": "3.4.0-beta-1"
   },
 
   "frameworks": {
-    "dnxcore50": {
+    "netcoreapp1.0": {
       "dependencies": {
-        "System.Console": "4.0.0-rc2-*",
-        "System.Globalization": "4.0.11-rc2-*",
-        "System.Reflection": "4.1.0-rc2-*",
-        "System.Reflection.TypeExtensions": "4.1.0-rc2-*",
-        "System.Threading.Timer": "4.0.1-rc2-*",
-        "NUnitLite": "3.0.0"
-      }
+        "System.Console": "4.0.0",
+        "System.Globalization": "4.0.11",
+        "System.Reflection": "4.1.0",
+        "System.Reflection.TypeExtensions": "4.1.0",
+        "System.Threading.Timer": "4.0.1"
+      },
+      "imports": [
+        "dnxcore50",
+        "portable-net45+win8"
+      ]
     }
   }
 }

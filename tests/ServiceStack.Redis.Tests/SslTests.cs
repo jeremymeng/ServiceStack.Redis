@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Security;
 using System.Net.Sockets;
-#if DNXCORE50
+#if NET_CORE
 using System.Reflection;
 #endif
 using System.Text;
@@ -17,7 +17,7 @@ using ServiceStack.Text;
 
 namespace ServiceStack.Redis.Tests
 {
-#if !DNXCORE50
+#if !NET_CORE
 	[Ignore("Requires ~/azureconfig.txt")]
     [TestFixture, Category("Integration")]
     public class SslTests
@@ -97,7 +97,7 @@ namespace ServiceStack.Redis.Tests
 
             if (!socket.Connected)
             {
-#if !DNXCORE50
+#if !NET_CORE
                 socket.Close();
 #else
                 socket.Dispose();
@@ -123,7 +123,7 @@ namespace ServiceStack.Redis.Tests
 
             if (!socket.Connected)
             {
-#if !DNXCORE50
+#if !NET_CORE
                 socket.Close();
 #else
                 socket.Dispose();
@@ -168,7 +168,7 @@ namespace ServiceStack.Redis.Tests
 
             sslStream.AuthenticateAsClient(Host);
 
-#if !DNXCORE50
+#if !NET_CORE
             if (!sslStream.IsEncrypted)
                 throw new Exception("Could not establish an encrypted connection to " + Host);
 #endif
@@ -298,7 +298,7 @@ namespace ServiceStack.Redis.Tests
                 {
                     var clientNo = i;
                     var action = (Action)(() => UseClientAsync(manager, clientNo, testData));
-#if !DNXCORE50
+#if !NET_CORE
 					clientAsyncResults.Add(action.BeginInvoke(null, null));
 #else
 					var f = System.Threading.Tasks.Task.Factory.StartNew(action);

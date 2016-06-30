@@ -45,7 +45,7 @@ namespace ServiceStack.Redis.Tests.Examples
 				};
 
 				//Asynchronously invoke the above delegate in a background thread
-#if !DNXCORE50
+#if !NET_CORE
 				asyncResults.Add(actionFn.BeginInvoke(null, null));
 #else
 				var f = System.Threading.Tasks.Task.Factory.StartNew(actionFn);

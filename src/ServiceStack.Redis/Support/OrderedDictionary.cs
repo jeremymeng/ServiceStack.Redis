@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-#if DNXCORE50
+#if NET_CORE
 using System.Reflection;
 #endif
 

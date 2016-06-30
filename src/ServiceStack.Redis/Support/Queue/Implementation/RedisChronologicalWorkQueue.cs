@@ -1,4 +1,4 @@
-﻿#if !DNXCORE50 // No serialization support on .Net Core.
+﻿#if !NET_CORE // No serialization support on .Net Core.
 using System.Collections.Generic;
 
 

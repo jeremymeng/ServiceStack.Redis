@@ -244,7 +244,7 @@ namespace ServiceStack.Redis.Tests
             Assert.That(stringDoubleMap.UnorderedEquivalentTo(map));
         }
 
-#if !DNXCORE50
+#if !NET_CORE
         [Test]
         public void Can_WorkInSortedSetUnderDifferentCulture()
         {

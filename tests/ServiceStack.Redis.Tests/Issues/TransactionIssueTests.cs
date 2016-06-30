@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-#if !DNXCORE50
+#if !NET_CORE
 using System.Timers;
 #endif
 using NUnit.Framework;
@@ -110,7 +110,7 @@ namespace ServiceStack.Redis.Tests.Issues
             }
         }
 
-#if !DNXCORE50
+#if !NET_CORE
         private void CheckConnection(object sender, ElapsedEventArgs e)
         {
             Task.Factory.StartNew(CheckThisConnection);

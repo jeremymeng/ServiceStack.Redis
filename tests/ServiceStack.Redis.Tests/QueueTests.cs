@@ -1,4 +1,4 @@
-﻿#if !DNXCORE50
+﻿#if !NET_CORE
 using System;
 using System.Collections.Generic;
 using System.Threading;
