@@ -1237,10 +1237,10 @@ namespace ServiceStack.Redis
             byte[] buffer = Encoding.UTF8.GetBytes(luaBody);
 #if !NET_CORE
             var cryptoTransformSHA1 = new SHA1CryptoServiceProvider();
-            return BitConverter.ToString(cryptoTransformSHA1.ComputeHash(buffer)).Replace("-", "");
 #else
-            throw new Exception("SHA1CryptoServiceProvider is not supported on .Net Core.");
+            var cryptoTransformSHA1 = SHA1.Create();
 #endif
+            return BitConverter.ToString(cryptoTransformSHA1.ComputeHash(buffer)).Replace("-", "");
         }
 
         public byte[] ScriptLoad(string luaBody)
